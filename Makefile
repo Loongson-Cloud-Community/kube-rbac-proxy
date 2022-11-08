@@ -8,12 +8,14 @@ GOOS?=$(shell uname -s | tr A-Z a-z)
 GOARCH?=$(shell go env GOARCH)
 OUT_DIR=_output
 BIN?=kube-rbac-proxy
-VERSION?=$(shell cat VERSION)-$(shell git rev-parse --short HEAD)
+#VERSION?=$(shell cat VERSION)-$(shell git rev-parse --short HEAD)
+VERSION?=$(shell cat VERSION)
 PKGS=$(shell go list ./... | grep -v /test/e2e)
-DOCKER_REPO?=quay.io/brancz/kube-rbac-proxy
+#DOCKER_REPO?=quay.io/brancz/kube-rbac-proxy
+DOCKER_REPO?=cr.loongnix.cn/brancz/kube-rbac-proxy
 KUBECONFIG?=$(HOME)/.kube/config
 
-ALL_ARCH=amd64 arm arm64 ppc64le s390x
+ALL_ARCH=amd64 arm arm64 ppc64le s390x loong64
 ALL_PLATFORMS=$(addprefix linux/,$(ALL_ARCH))
 ALL_BINARIES ?= $(addprefix $(OUT_DIR)/$(BIN)-, \
 				$(addprefix linux-,$(ALL_ARCH)) \

@@ -13,7 +13,7 @@ set -x
 git fetch --tags
 
 QUAY_PATH="${QUAY_PATH:-quay.io/brancz/kube-rbac-proxy}"
-CPU_ARCHS="amd64 arm64 arm ppc64le s390x"
+CPU_ARCHS="amd64 arm64 arm ppc64le s390x loong64"
 TAG_COMMIT=$(git rev-list --abbrev-commit --tags --max-count=1)
 COMMIT=$(git rev-parse --short HEAD)
 TAG=$(git describe --abbrev=0 --tags ${TAG_COMMIT})
